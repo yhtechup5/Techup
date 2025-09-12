@@ -1,0 +1,25 @@
+.weather-container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto 32px auto;
+  gap: 40px;
+
+  .weather-box {
+    flex: 1;
+    border-top: 2px solid var(--brand-purple);
+    display: grid;
+    color: var(--brand-dark-purple);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 12px;
+
+    .weather-day {
+      font-size: 18px;
+      font-weight: 700;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--brand-purple);
+    }
+  }
+}

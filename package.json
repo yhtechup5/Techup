@@ -1,0 +1,39 @@
+{
+  "name": "techup-run-5-app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && esbuild src/App.tsx --bundle --outfile=dist/bundle.js --loader:.tsx=tsx --loader:.ts=tsx --loader:.css=css",
+    "build:watch": "concurrently \"tsc --watch\" \"esbuild src/App.tsx --bundle --outfile=dist/bundle.js --loader:.tsx=tsx --loader:.ts=tsx --loader:.css=css --watch\"",
+    "start": "npm run build && concurrently \"npm run build:watch\" \"nodemon --config nodemon.json\" --kill-others --prefix name --names \"build,server\"",
+    "seed": "tsx scripts/seed-db.ts"
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/dotenv": "^6.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.2",
+    "express": "^4.18.0",
+    "postgres": "^3.4.7",
+    "prettier": "^3.6.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/connect-livereload": "^0.6.3",
+    "@types/express": "^4.17.0",
+    "@types/livereload": "^0.9.5",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.8",
+    "chokidar": "^4.0.3",
+    "concurrently": "^9.2.1",
+    "connect-livereload": "^0.6.1",
+    "esbuild": "^0.25.9",
+    "livereload": "^0.10.3",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.20.5",
+    "typescript": "^5.0.0"
+  }
+}

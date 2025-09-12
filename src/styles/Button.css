@@ -1,0 +1,40 @@
+.button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button:active {
+  background-color: #004085;
+}
+
+.button--disabled {
+  background-color: #6c757d;
+  cursor: default;
+  opacity: 0.4;
+}
+
+.button--disabled:hover {
+  background-color: #6c757d;
+  transform: none;
+}
+
+.button--disabled:active {
+  background-color: #6c757d;
+}
+
