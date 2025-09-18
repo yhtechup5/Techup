@@ -32,81 +32,12 @@ app.use("/dist", express.static(join(__dirname, "../dist")));
 // Cart endpoints ---
 
 app.get("/api/cart", async (req: Request, res: Response) => {
-  const userId = req.cookies.user;
-
-  if (!userId) {
-    return res.status(400).json({
-      error: "No user cookie found. Please login first.",
-    });
-  }
-
-  try {
-    const data = await db`
-      SELECT product_id FROM public.carts WHERE user_id = ${userId}
-    `;
-    const productIds = data.map((item) => item.product_id);
-    res.json(productIds);
-  } catch (error) {
-    console.error("Error fetching cart items:", error);
-    res.status(500).json({ error });
-  }
 });
 
 app.post("/api/cart", async (req: Request, res: Response) => {
-  const userId = req.cookies.user;
-  const { productId } = req.body;
-
-  if (!userId) {
-    return res.status(400).json({
-      error: "No user cookie found. Please login first.",
-    });
-  }
-
-  if (!productId || typeof productId !== "string") {
-    return res.status(400).json({
-      error: "Product ID is required and must be a string.",
-    });
-  }
-
-  try {
-    await db`
-      INSERT INTO public.carts (user_id, product_id)
-      VALUES (${userId}, ${productId})
-      ON CONFLICT (user_id, product_id) DO NOTHING
-    `;
-    res.json({ success: true });
-  } catch (error) {
-    console.error("Error adding product to cart:", error);
-    res.status(500).json({ error });
-  }
 });
 
 app.delete("/api/cart", async (req: Request, res: Response) => {
-  const userId = req.cookies.user;
-  const { productId } = req.body;
-
-  if (!userId) {
-    return res.status(400).json({
-      error: "No user cookie found. Please login first.",
-    });
-  }
-
-  if (!productId || typeof productId !== "string") {
-    return res.status(400).json({
-      error: "Product ID is required and must be a string.",
-    });
-  }
-
-  try {
-    await db`
-      DELETE FROM public.carts 
-      WHERE user_id = ${userId} AND product_id = ${productId}
-    `;
-    res.json({ success: true });
-  } catch (error) {
-    console.error("Error removing product from cart:", error);
-    res.status(500).json({ error });
-  }
 });
 
 // Auth endpoints ---
