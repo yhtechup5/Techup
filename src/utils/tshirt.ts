@@ -1,40 +1,40 @@
 const DEFAULT_DARKEN_FACTOR = 0.3;
 
 export interface TShirtProperties {
-  id: number;
+  id: string;
   color: string;
   title: string;
 }
 
 export const TSHIRT_COLLECTION: TShirtProperties[] = [
-  { id: 1, color: "#f8f8ff", title: "Ghost White" },
-  { id: 2, color: "#e6e6fa", title: "Lavender" },
-  { id: 3, color: "#ffefd5", title: "Papaya Whip" },
-  { id: 4, color: "#ffb6c1", title: "Light Pink" },
-  { id: 5, color: "#dda0dd", title: "Plum" },
-  { id: 6, color: "#d3d3d3", title: "Light Gray" },
-  { id: 7, color: "#e0e0e0", title: "Platinum" },
-  { id: 8, color: "#c8f7c5", title: "Mint Green" },
-  { id: 9, color: "#ffd1dc", title: "Rose" },
-  { id: 10, color: "#b0e0e6", title: "Powder Blue" },
-  { id: 11, color: "#f5deb3", title: "Wheat" },
-  { id: 12, color: "#d8bfd8", title: "Thistle" },
-  { id: 13, color: "#dcd0ff", title: "Periwinkle" },
-  { id: 14, color: "#afeeee", title: "Pale Turquoise" },
-  { id: 15, color: "#ffe4b5", title: "Moccasin" },
-  { id: 16, color: "#da70d6", title: "Orchid" },
-  { id: 17, color: "#98fb98", title: "Pale Green" },
-  { id: 18, color: "#87ceeb", title: "Sky Blue" },
-  { id: 19, color: "#f0e68c", title: "Khaki" },
-  { id: 20, color: "#20b2aa", title: "Light Sea Green" },
-  { id: 21, color: "#f4a460", title: "Sandy Brown" },
-  { id: 22, color: "#ffc0cb", title: "Pink" },
-  { id: 23, color: "#add8e6", title: "Light Blue" },
-  { id: 24, color: "#ffcccb", title: "Light Coral" },
-  { id: 25, color: "#fffacd", title: "Lemon Chiffon" },
-  { id: 26, color: "#deb887", title: "Burlywood" },
-  { id: 27, color: "#f5f5dc", title: "Beige" },
-  { id: 28, color: "#ffffff", title: "Pure White" },
+  { id: "550e8400-e29b-41d4-a716-446655440001", color: "#f8f8ff", title: "Ghost White" },
+  { id: "550e8400-e29b-41d4-a716-446655440002", color: "#e6e6fa", title: "Lavender" },
+  { id: "550e8400-e29b-41d4-a716-446655440003", color: "#ffefd5", title: "Papaya Whip" },
+  { id: "550e8400-e29b-41d4-a716-446655440004", color: "#ffb6c1", title: "Light Pink" },
+  { id: "550e8400-e29b-41d4-a716-446655440005", color: "#dda0dd", title: "Plum" },
+  { id: "550e8400-e29b-41d4-a716-446655440006", color: "#d3d3d3", title: "Light Gray" },
+  { id: "550e8400-e29b-41d4-a716-446655440007", color: "#e0e0e0", title: "Platinum" },
+  { id: "550e8400-e29b-41d4-a716-446655440008", color: "#c8f7c5", title: "Mint Green" },
+  { id: "550e8400-e29b-41d4-a716-446655440009", color: "#ffd1dc", title: "Rose" },
+  { id: "550e8400-e29b-41d4-a716-446655440010", color: "#b0e0e6", title: "Powder Blue" },
+  { id: "550e8400-e29b-41d4-a716-446655440011", color: "#f5deb3", title: "Wheat" },
+  { id: "550e8400-e29b-41d4-a716-446655440012", color: "#d8bfd8", title: "Thistle" },
+  { id: "550e8400-e29b-41d4-a716-446655440013", color: "#dcd0ff", title: "Periwinkle" },
+  { id: "550e8400-e29b-41d4-a716-446655440014", color: "#afeeee", title: "Pale Turquoise" },
+  { id: "550e8400-e29b-41d4-a716-446655440015", color: "#ffe4b5", title: "Moccasin" },
+  { id: "550e8400-e29b-41d4-a716-446655440016", color: "#da70d6", title: "Orchid" },
+  { id: "550e8400-e29b-41d4-a716-446655440017", color: "#98fb98", title: "Pale Green" },
+  { id: "550e8400-e29b-41d4-a716-446655440018", color: "#87ceeb", title: "Sky Blue" },
+  { id: "550e8400-e29b-41d4-a716-446655440019", color: "#f0e68c", title: "Khaki" },
+  { id: "550e8400-e29b-41d4-a716-446655440020", color: "#20b2aa", title: "Light Sea Green" },
+  { id: "550e8400-e29b-41d4-a716-446655440021", color: "#f4a460", title: "Sandy Brown" },
+  { id: "550e8400-e29b-41d4-a716-446655440022", color: "#ffc0cb", title: "Pink" },
+  { id: "550e8400-e29b-41d4-a716-446655440023", color: "#add8e6", title: "Light Blue" },
+  { id: "550e8400-e29b-41d4-a716-446655440024", color: "#ffcccb", title: "Light Coral" },
+  { id: "550e8400-e29b-41d4-a716-446655440025", color: "#fffacd", title: "Lemon Chiffon" },
+  { id: "550e8400-e29b-41d4-a716-446655440026", color: "#deb887", title: "Burlywood" },
+  { id: "550e8400-e29b-41d4-a716-446655440027", color: "#f5f5dc", title: "Beige" },
+  { id: "550e8400-e29b-41d4-a716-446655440028", color: "#ffffff", title: "Pure White" },
 ];
 
 function darkenColor(
