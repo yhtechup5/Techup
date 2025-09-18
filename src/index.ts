@@ -112,73 +112,12 @@ app.delete("/api/cart", async (req: Request, res: Response) => {
 // Auth endpoints ---
 
 app.get("/api/auth/user", async (req: Request, res: Response) => {
-  const userId = req.cookies.user;
-
-  if (!userId) {
-    return res.json({ user: null });
-  }
-
-  try {
-    const data = await db`
-      SELECT name FROM public.users WHERE id = ${userId}
-    `;
-
-    if (data.length === 0) {
-      // user id not found in database, clear the cookie
-      res.clearCookie("user", { path: "/" });
-      return res.json({ user: null });
-    }
-
-    res.json({ user: data[0].name });
-  } catch (error) {
-    console.error("Error fetching user:", error);
-    // clear cookie on error and return null user
-    res.clearCookie("user", { path: "/" });
-    res.json({ user: null });
-  }
 });
 
 app.post("/api/auth/login", async (req: Request, res: Response) => {
-  const { name } = req.body;
-
-  if (!name || typeof name !== "string") {
-    return res.status(400).json({
-      error: "Name is required and must be a string.",
-    });
-  }
-
-  const trimmedName = name.trim();
-  if (!trimmedName) {
-    return res.status(400).json({
-      error: "Name cannot be empty.",
-    });
-  }
-
-  try {
-    const data = await db`
-      INSERT INTO public.users (name)
-      VALUES (${trimmedName})
-      ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
-      RETURNING id
-    `;
-    const userId = data[0].id;
-
-    // set cookie with user id and 24 hour expiry
-    res.cookie("user", userId, {
-      maxAge: 86400000,
-      path: "/",
-    });
-
-    res.json({ success: true });
-  } catch (error) {
-    console.error("Error during login:", error);
-    res.status(500).json({ success: false });
-  }
 });
 
 app.post("/api/auth/logout", (req: Request, res: Response) => {
-  res.clearCookie("user", { path: "/" });
-  res.json({ success: true });
 });
 
 // Product endpoints ---
