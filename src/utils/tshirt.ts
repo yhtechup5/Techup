@@ -34,9 +34,8 @@ export const TSHIRT_COLLECTION: TShirtProperties[] = [
   { id: 25, color: "#fffacd", title: "Lemon Chiffon" },
   { id: 26, color: "#deb887", title: "Burlywood" },
   { id: 27, color: "#f5f5dc", title: "Beige" },
-  { id: 28, color: "#ffffff", title: "Pure White" }
+  { id: 28, color: "#ffffff", title: "Pure White" },
 ];
-
 
 function darkenColor(
   color: { r: number; g: number; b: number },
@@ -63,11 +62,11 @@ export function renderTShirt(canvas: HTMLCanvasElement, color: string): void {
   const sleeveWidth = 16 * scale;
   const sleeveHeight = 18 * scale;
 
-  const hex = color.replace('#', '');
+  const hex = color.replace("#", "");
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
-  
+
   const color1 = color;
   const color2 = darkenColor({ r, g, b }, DEFAULT_DARKEN_FACTOR);
 
