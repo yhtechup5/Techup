@@ -45,32 +45,5 @@ export interface DailyWeatherData {
 export async function getSingaporeWeatherForecast(): Promise<
   DailyWeatherData[]
 > {
-  const latitude = 1.3521;
-  const longitude = 103.8198;
-
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_sum&timezone=Asia%2FSingapore&forecast_days=3`;
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
-  }
-  const weatherData: WeatherForecast = await response.json();
-
-  return weatherData.daily.time.map(
-    (date, index) => {
-      const maxTemp = weatherData.daily.temperature_2m_max[index];
-      const minTemp = weatherData.daily.temperature_2m_min[index];
-      const weatherCode = weatherData.daily.weather_code[index];
-      const precipitation = weatherData.daily.precipitation_sum[index];
-      const weatherDescription =
-        weatherDescriptions[weatherCode] || "Unknown weather condition";
-      return {
-        date,
-        maxTemp,
-        minTemp,
-        precipitation,
-        weatherDescription,
-      };
-    },
-  );
+  return [];
 }
