@@ -5,6 +5,7 @@ import livereload from "livereload";
 import connectLivereload from "connect-livereload";
 import cookieParser from "cookie-parser";
 import db from "./utils/db.js";
+import { TSHIRT_COLLECTION } from "./utils/tshirt.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -183,17 +184,7 @@ app.post("/api/auth/logout", (req: Request, res: Response) => {
 // Product endpoints ---
 
 app.get("/api/products", async (req: Request, res: Response) => {
-  try {
-    const products = await db`
-      SELECT id, title, color FROM public.products
-    `;
-    res.json(products);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    res.status(500).json({
-      error: "Failed to fetch products from database",
-    });
-  }
+  res.json(TSHIRT_COLLECTION);
 });
 
 // ---

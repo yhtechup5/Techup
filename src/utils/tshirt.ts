@@ -1,5 +1,43 @@
 const DEFAULT_DARKEN_FACTOR = 0.3;
 
+export interface TShirtProperties {
+  id: number;
+  color: string;
+  title: string;
+}
+
+export const TSHIRT_COLLECTION: TShirtProperties[] = [
+  { id: 1, color: "#f8f8ff", title: "Ghost White" },
+  { id: 2, color: "#e6e6fa", title: "Lavender" },
+  { id: 3, color: "#ffefd5", title: "Papaya Whip" },
+  { id: 4, color: "#ffb6c1", title: "Light Pink" },
+  { id: 5, color: "#dda0dd", title: "Plum" },
+  { id: 6, color: "#d3d3d3", title: "Light Gray" },
+  { id: 7, color: "#e0e0e0", title: "Platinum" },
+  { id: 8, color: "#c8f7c5", title: "Mint Green" },
+  { id: 9, color: "#ffd1dc", title: "Rose" },
+  { id: 10, color: "#b0e0e6", title: "Powder Blue" },
+  { id: 11, color: "#f5deb3", title: "Wheat" },
+  { id: 12, color: "#d8bfd8", title: "Thistle" },
+  { id: 13, color: "#dcd0ff", title: "Periwinkle" },
+  { id: 14, color: "#afeeee", title: "Pale Turquoise" },
+  { id: 15, color: "#ffe4b5", title: "Moccasin" },
+  { id: 16, color: "#da70d6", title: "Orchid" },
+  { id: 17, color: "#98fb98", title: "Pale Green" },
+  { id: 18, color: "#87ceeb", title: "Sky Blue" },
+  { id: 19, color: "#f0e68c", title: "Khaki" },
+  { id: 20, color: "#20b2aa", title: "Light Sea Green" },
+  { id: 21, color: "#f4a460", title: "Sandy Brown" },
+  { id: 22, color: "#ffc0cb", title: "Pink" },
+  { id: 23, color: "#add8e6", title: "Light Blue" },
+  { id: 24, color: "#ffcccb", title: "Light Coral" },
+  { id: 25, color: "#fffacd", title: "Lemon Chiffon" },
+  { id: 26, color: "#deb887", title: "Burlywood" },
+  { id: 27, color: "#f5f5dc", title: "Beige" },
+  { id: 28, color: "#ffffff", title: "Pure White" }
+];
+
+
 function darkenColor(
   color: { r: number; g: number; b: number },
   factor: number,
