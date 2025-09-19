@@ -42,7 +42,7 @@ app.delete("/api/cart", async (req: Request, res: Response) => {
 
 // Auth endpoints ---
 
-app.get("/api/auth/user", async (req: Request, res: Response) => {
+app.get("/api/auth/user", async (req: Request, res: Response<{user: string}>) => {
 });
 
 app.post("/api/auth/login", async (req: Request, res: Response) => {
