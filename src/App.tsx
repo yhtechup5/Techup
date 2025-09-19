@@ -79,66 +79,12 @@ const App: React.FC = () => {
   };
 
   const fetchCart = async () => {
-    try {
-      const response = await fetch("/api/cart", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-      if (response.ok) {
-        const cartData = await response.json();
-        setCart(cartData);
-      } else {
-        setCart([]);
-      }
-    } catch (error) {
-      console.error("Error fetching cart:", error);
-      setCart([]);
-    }
   };
 
   const addToCart = async (productId: string) => {
-    try {
-      const response = await fetch("/api/cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ productId }),
-      });
-      if (response.ok) {
-        await fetchCart();
-      } else {
-        const error = await response.json();
-        console.error(`Error adding to cart: ${error.error}`);
-      }
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-    }
   };
 
   const removeFromCart = async (productId: string) => {
-    try {
-      const response = await fetch("/api/cart", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ productId }),
-      });
-      if (response.ok) {
-        await fetchCart();
-      } else {
-        const error = await response.json();
-        console.error(`Error removing from cart: ${error.error}`);
-      }
-    } catch (error) {
-      console.error("Error removing from cart:", error);
-    }
   };
 
   useEffect(() => {
