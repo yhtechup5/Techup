@@ -5,6 +5,9 @@ import Weather from "./components/Weather.js";
 import Login from "./components/Login.js";
 import "./styles/App.css";
 
+const KICKER_TEXT = "The best tees in town. ";
+const KICKER_TEXT_ANIMATION_ENABLED = true;
+
 interface Product {
   id: string;
   title: string;
@@ -58,6 +61,8 @@ const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [cart, setCart] = useState<string[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [kickerText, setKickerText] = useState<string>(KICKER_TEXT);
+  const [isRotating, setIsRotating] = useState<boolean>(false);
 
   const fetchProducts = async () => {
     try {
@@ -86,6 +91,71 @@ const App: React.FC = () => {
 
   const removeFromCart = async (productId: string) => {
   };
+
+  const rotateKickerText = () => {
+    demo0Rotate();
+    // demo1Alert();
+    // demo2Loop();
+    // demo3Bug();
+  };
+
+  const demo0Rotate = () => {
+    if (isRotating || !KICKER_TEXT_ANIMATION_ENABLED) return;
+    setIsRotating(true);
+    setKickerText((prevText) => {
+      if (prevText.length <= 1) return prevText;
+      return prevText.slice(1) + prevText[0];
+    });
+    setTimeout(() => {
+      setIsRotating(false);
+    }, 300);
+  };
+
+  const demo1Alert = () => {
+    alert("Hello world");
+  }
+
+  const demo2Loop = () => {
+    const numLoops = 5;
+    let counter = 0;
+    
+    const countUp = () => {
+      setKickerText(counter.toString());
+      setIsRotating(true);
+      
+      if (counter < numLoops) {
+        counter++;
+        setTimeout(() => {
+          setIsRotating(false);
+          setTimeout(countUp, 1000);
+        }, 300);
+      } else {
+        setTimeout(() => {
+          setIsRotating(false);
+          setTimeout(() => {
+            setKickerText(KICKER_TEXT);
+          }, 1000);
+        }, 300);
+      }
+    };
+    
+    if (!isRotating && KICKER_TEXT_ANIMATION_ENABLED) {
+      countUp();
+    }
+  }
+
+  const demo3Bug = () => {
+    const numerators = [100, 50, 75, 60, 80];
+    const denominators = [10, 5, 3, 0, 4];
+    const results: number[] = [];
+    for (let i = 0; i < numerators.length; i++) {
+      const result = numerators[i] / denominators[i];
+      const percentage = (result * 100).toFixed(2);
+      const formattedResult = percentage.split('.')[0];
+      results.push(parseInt(formattedResult));
+    }
+    setKickerText(results.join(', '));
+  }
 
   useEffect(() => {
     (async () => {
@@ -126,7 +196,14 @@ const App: React.FC = () => {
   return (
     <div>
       <h1>Rohan's Tee Shop</h1>
-      <h2>¯\_(ツ)_/¯</h2>
+      <h2 
+        id="kicker" 
+        onClick={rotateKickerText}
+        className={isRotating ? "rotating" : ""}
+        style={{ cursor: "pointer" }}
+      >
+        {kickerText}
+      </h2>
       <Weather />
       <Login
         currentUser={currentUser}
@@ -146,5 +223,7 @@ if (typeof window !== "undefined") {
     root.render(<App />);
   }
 }
+
+
 
 export default App;
